@@ -22,27 +22,27 @@ import Cronometro from "./Cronometro.vue";
 
 export default defineComponent({
   name: "TempAlura",
-  emits: ['aoTemporizadorFinalizado'],
+  emits: ["aoTemporizadorFinalizado"],
   components: { Cronometro },
   data() {
     return {
-        tempoEmSegundos: 0,
-        cronometro: 0,
-        cronometroRodando: false,
+      tempoEmSegundos: 0,
+      cronometro: 0,
+      cronometroRodando: false,
     };
   },
   methods: {
     iniciar() {
-        this.cronometroRodando = true
-        this.cronometro = setInterval(() => {
+      this.cronometroRodando = true;
+      this.cronometro = setInterval(() => {
         this.tempoEmSegundos += 1;
-    }, 1000);
+      }, 1000);
     },
     finalizar() {
-        this.cronometroRodando = false 
-        clearInterval(this.cronometro)
-        this.$emit('aoTemporizadorFinalizado', this.tempoEmSegundos)
-        this.tempoEmSegundos = 0
+      this.cronometroRodando = false;
+      clearInterval(this.cronometro);
+      this.$emit("aoTemporizadorFinalizado", this.tempoEmSegundos);
+      this.tempoEmSegundos = 0;
     },
   },
 });

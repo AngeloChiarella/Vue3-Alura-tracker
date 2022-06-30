@@ -3,12 +3,32 @@
     <h1>
       <img src="../assets/logo.png" alt="" />
     </h1>
-    <button v-if="modoEscuroAtivo" class="button is-warning" @click="alterarTema">
+    <button
+      v-if="modoEscuroAtivo"
+      class="button is-warning"
+      @click="alterarTema"
+    >
       {{ textoDoBotao }}
     </button>
     <button v-if="!modoEscuroAtivo" class="button is-dark" @click="alterarTema">
       {{ textoDoBotao }}
     </button>
+    <nav class="panel mt-5">
+      <ul>
+        <li>
+          <router-link to="/" class="link">
+            <i class="fas fa-tasks"></i>
+            tarefas
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/projetos" class="link">
+            <i class="fas fa-project-diagram"></i>
+            projetos
+          </router-link>
+        </li>
+      </ul>
+    </nav>
   </header>
 </template>
 
@@ -41,10 +61,14 @@ export default defineComponent({
 </script>
 
 <style scoped>
-/* Todo o estilo do componente */
-
+h1 {
+  text-align: left;
+}
+strong {
+  color: #f95738;
+}
 header {
-  padding: 1rem;
+  padding: 2.5rem;
   background: var(--bg-barra-primario);
   width: 100%;
   height: 100vh;
@@ -53,7 +77,21 @@ header {
 @media only screen and (max-width: 768px) {
   header {
     padding: 2.5rem;
-    height: auto;
+    height: 100vh;
+    text-align: auto;
   }
+}
+.panel li {
+  margin: 8px;
+  text-align: initial;
+}
+.link {
+  color: var(--texto-primario);
+}
+.link:hover {
+  color: var(--texto-primario);
+}
+.link.router-link-active {
+  color:var(--texto-primario)
 }
 </style>
